@@ -1,0 +1,1240 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --maroon: #4b1719;
+  --maroon-deep: #321012;
+  --maroon-light: #6b2424;
+  --gold: #c79a43;
+  --gold-light: #e2bd68;
+  --ivory: #f8f0df;
+  --cream: #efe2c8;
+  --ink: #211817;
+  --stone: #5a5149;
+  --paper: #fffaf0;
+  --line: rgb(199 154 67 / 32%);
+  --shadow: 0 24px 70px rgb(34 17 13 / 15%);
+  --page-gutter: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+@theme inline {
+  --color-background: var(--ivory);
+  --color-foreground: var(--ink);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  background-image: radial-gradient(#3d251c 0.7px, transparent 0.7px);
+  background-size: 17px 17px;
+  content: "";
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  width: min(1180px, calc(100% - var(--page-gutter) * 2));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 90;
+  inset: 0 0 auto;
+  padding-block: 0.75rem;
+  transition:
+    background-color 350ms ease,
+    box-shadow 350ms ease,
+    backdrop-filter 350ms ease;
+}
+
+.site-header[data-scrolled="true"],
+.site-header[data-menu-open="true"] {
+  background: rgb(56 17 19 / 95%);
+  box-shadow: 0 8px 30px rgb(30 9 9 / 34%);
+  backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.65rem;
+  color: #fff8e9;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2.35rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--gold-light);
+  border-radius: 50%;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  color: #fff8e9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+}
+
+.desktop-nav a,
+.footer a {
+  transition: color 180ms ease;
+}
+
+.desktop-nav a {
+  opacity: 0.9;
+}
+
+.desktop-nav a:hover,
+.footer a:hover {
+  color: var(--gold-light);
+}
+
+.nav-cta {
+  flex-shrink: 0;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--gold);
+  border-radius: 99px;
+  color: #fff7df;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--maroon-deep);
+}
+
+.menu-toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(226 189 104 / 55%);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff8e9;
+  cursor: pointer;
+}
+
+.menu-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: min(900px, 100svh);
+  min-height: max(670px, 100svh);
+  place-items: center;
+  overflow: hidden;
+  background: var(--maroon-deep);
+  color: white;
+  isolation: isolate;
+}
+
+.hero-media,
+.hero-shade,
+.hero-fade {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media {
+  z-index: -2;
+}
+
+.hero-image {
+  object-fit: cover;
+  object-position: center 48%;
+  animation: hero-zoom 18s ease-out both;
+}
+
+.hero-shade {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(40 8 10 / 86%), rgb(65 20 16 / 48%) 55%, rgb(20 10 7 / 36%)),
+    linear-gradient(0deg, rgb(28 11 9 / 26%), transparent 58%);
+}
+
+.hero-fade {
+  inset: auto 0 0;
+  height: 25%;
+  background: linear-gradient(transparent, var(--ivory));
+}
+
+.hero-content {
+  width: min(1000px, calc(100% - var(--page-gutter) * 2));
+  padding-top: 6.5rem;
+  text-align: center;
+  animation: fade-up 850ms 120ms both;
+}
+
+.kicker,
+.eyebrow {
+  color: #9c6e25;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.hero .kicker {
+  margin-bottom: 1.25rem;
+  color: var(--gold-light);
+  letter-spacing: 0.35em;
+}
+
+.hero h1 {
+  margin: 0 0 1.7rem;
+  font-size: clamp(3.4rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.92;
+  text-shadow: 0 8px 35px rgb(0 0 0 / 53%);
+}
+
+.hero-copy {
+  max-width: 680px;
+  margin: 0 auto 2.1rem;
+  color: #f9ead0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.8;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.55rem;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+  letter-spacing: 0.025em;
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button-gold {
+  background: var(--gold);
+  color: #29110f;
+}
+
+.button-gold:hover {
+  background: var(--gold-light);
+}
+
+.button-outline {
+  border-color: #f1d28a;
+  color: #fff5dc;
+}
+
+.button-outline:hover {
+  background: rgb(255 255 255 / 9%);
+}
+
+.scroll-cue {
+  position: absolute;
+  z-index: 2;
+  bottom: 2.25rem;
+  left: 50%;
+  color: #f4dbad;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  transform: translateX(-50%);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(4.5rem, 8vw, 6.6rem);
+}
+
+.section-heading {
+  max-width: 750px;
+  margin: 0 auto 3.2rem;
+  text-align: center;
+}
+
+.section-heading h2,
+.copy-title {
+  margin: 0.9rem 0;
+  font-size: clamp(2.15rem, 5vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.section-heading p,
+.body-copy {
+  color: #6b5b52;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.8;
+}
+
+.ornament {
+  position: relative;
+  width: 6.9rem;
+  height: 1px;
+  margin: 1.4rem auto;
+  background: var(--gold);
+}
+
+.ornament::before,
+.ornament::after {
+  position: absolute;
+  top: -0.55rem;
+  color: var(--gold);
+  content: "✦";
+  font-size: 0.75rem;
+}
+
+.ornament::before {
+  left: 1.35rem;
+}
+
+.ornament::after {
+  right: 1.35rem;
+}
+
+.ornament-left {
+  margin-left: 0;
+}
+
+.journeys-section {
+  background: var(--ivory);
+}
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.journey-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  transition:
+    transform 400ms ease,
+    box-shadow 400ms ease;
+}
+
+.journey-card:hover {
+  box-shadow: 0 30px 75px rgb(34 17 13 / 20%);
+  transform: translateY(-9px);
+}
+
+.journey-card__image {
+  position: relative;
+  height: 18.1rem;
+  overflow: hidden;
+}
+
+.image-card__image {
+  object-fit: cover;
+  transition: transform 800ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.journey-card:hover .image-card__image,
+.destination:hover .image-card__image {
+  transform: scale(1.055);
+}
+
+.journey-card__body {
+  padding: 1.65rem;
+}
+
+.journey-card__eyebrow {
+  color: #9b702e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.journey-card h3,
+.partner-card h3 {
+  margin: 0.65rem 0;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.journey-card p,
+.partner-card p {
+  color: #6b5b52;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.83rem;
+  line-height: 1.75;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 0.55rem;
+  color: #9b702e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.dark-section {
+  background: var(--maroon);
+  color: #fff2d9;
+}
+
+.dark-section .eyebrow {
+  color: var(--gold-light);
+}
+
+.dark-section .body-copy {
+  color: #dfccb0;
+}
+
+.circuit-layout,
+.international-layout,
+.senior-layout,
+.testimonial-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 3.5rem);
+}
+
+.circuit-image {
+  position: relative;
+  height: min(570px, 58vw);
+  min-height: 410px;
+  box-shadow: 25px 25px 0 rgb(199 154 67 / 17%);
+}
+
+.circuit-copy h2,
+.international-copy h2,
+.senior-copy h2,
+.ceremony-copy h2 {
+  margin: 0.95rem 0;
+  font-size: clamp(2.4rem, 5vw, 3.95rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.steps {
+  margin-top: 2rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.step-number {
+  flex: 0 0 auto;
+  color: var(--gold-light);
+  font-size: 1.4rem;
+}
+
+.step-copy {
+  color: #dfccb0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+
+.step-copy strong {
+  color: #fff2d9;
+}
+
+.circuit-button {
+  margin-top: 1.55rem;
+}
+
+.destinations-section {
+  background: var(--paper);
+}
+
+.destination-grid {
+  display: grid;
+  min-height: 538px;
+  grid-template-columns: 1.3fr 0.7fr 0.7fr;
+  grid-template-rows: repeat(2, minmax(250px, 1fr));
+  gap: 1.1rem;
+}
+
+.destination {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+  background: var(--stone);
+}
+
+.destination:first-child {
+  grid-row: span 2;
+}
+
+.destination::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 30%, rgb(27 11 10 / 72%));
+  content: "";
+}
+
+.destination-label {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1.3rem;
+  left: 1.4rem;
+  color: white;
+}
+
+.destination-label small {
+  color: var(--gold-light);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+}
+
+.destination-label h3 {
+  margin: 0.35rem 0 0;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.international-section {
+  background: #eadfc9;
+}
+
+.international-layout {
+  gap: clamp(2.5rem, 6vw, 3.75rem);
+}
+
+.international-copy h2 {
+  font-size: clamp(2.45rem, 4.5vw, 3.55rem);
+}
+
+.passport-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 3.25rem);
+  background: var(--maroon);
+  box-shadow: var(--shadow);
+  color: #fff1d7;
+}
+
+.passport-card::before {
+  position: absolute;
+  top: 0;
+  right: 1.8rem;
+  color: rgb(255 255 255 / 4%);
+  content: "K";
+  font-size: 9.4rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.passport-card h2 {
+  position: relative;
+  margin: 0.8rem 0 1.1rem;
+  font-size: clamp(2.55rem, 4.4vw, 3.15rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.passport-card p {
+  color: #dbc8aa;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.8;
+}
+
+.country-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.2rem;
+}
+
+.country {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--gold);
+  border-radius: 99px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.75rem;
+}
+
+.ceremony-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.ceremony-image {
+  position: relative;
+  min-height: 550px;
+}
+
+.ceremony-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(2.5rem, 7vw, 4.7rem);
+  background: #dbc59c;
+}
+
+.ceremony-copy h2 {
+  font-size: clamp(2.65rem, 5vw, 3.55rem);
+}
+
+.ceremony-copy .body-copy {
+  color: #51453e;
+}
+
+.ceremony-copy .button {
+  margin-top: 0.8rem;
+}
+
+.senior-section {
+  background: #f5ecdb;
+}
+
+.senior-layout {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.senior-image {
+  position: relative;
+  height: 470px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.25rem;
+  margin-top: 1.6rem;
+}
+
+.feature {
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.feature strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-size: 1.08rem;
+  font-weight: 400;
+}
+
+.feature span {
+  color: #685a50;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.testimonial-section {
+  background: var(--maroon);
+  color: white;
+}
+
+.testimonial-layout {
+  gap: 2.8rem;
+}
+
+.testimonial-image {
+  position: relative;
+  height: 460px;
+}
+
+.quote-card {
+  padding: 1.4rem;
+}
+
+.quote-mark {
+  margin-top: 1.1rem;
+  color: var(--gold);
+  font-size: 5.6rem;
+  line-height: 0.7;
+}
+
+.quote-card blockquote {
+  margin: 1rem 0 1.35rem;
+  font-size: clamp(1.55rem, 3vw, 1.95rem);
+  line-height: 1.4;
+}
+
+.quote-meta {
+  color: #d8c5a6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+}
+
+.quote-note {
+  color: #cdbb9e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.73rem;
+  line-height: 1.6;
+}
+
+.partner-section {
+  background: #efe2ca;
+}
+
+.partner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.partner-card {
+  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border: 1px solid #d9c6a0;
+  background: var(--paper);
+}
+
+.partner-card h3 {
+  margin-top: 0.8rem;
+}
+
+.final-cta {
+  padding: clamp(5.5rem, 10vw, 8.2rem) var(--page-gutter);
+  background: linear-gradient(110deg, #421214, #6b2524);
+  color: white;
+  text-align: center;
+}
+
+.final-cta h2 {
+  max-width: 850px;
+  margin: 0.95rem auto;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 400;
+  line-height: 1.02;
+}
+
+.final-cta p {
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  color: #ead8bb;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.8;
+}
+
+.footer {
+  padding: 3.5rem 0 1.5rem;
+  background: #241111;
+  color: #dbc8aa;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  gap: 2.2rem;
+}
+
+.footer-title {
+  margin-bottom: 0.8rem;
+  color: #fff0d1;
+  font-size: 1.1rem;
+}
+
+.footer p,
+.footer a {
+  color: #bda98e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.footer .brand {
+  color: #fff8e9;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+
+.footer .brand-mark {
+  color: var(--gold-light);
+  font-size: 1.1rem;
+}
+
+.footer-copy {
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgb(255 255 255 / 9%);
+  color: #9f8b75;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.65;
+}
+
+.whatsapp-button {
+  position: fixed;
+  z-index: 95;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  display: grid;
+  width: 3.55rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #1e9e58;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  animation: pulse 2.5s infinite;
+}
+
+.reveal {
+  transition:
+    opacity 800ms ease,
+    transform 800ms ease;
+}
+
+.reveal[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(2.2rem);
+}
+
+.reveal[data-reveal="visible"] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
+  }
+
+  50% {
+    box-shadow:
+      0 8px 30px rgb(0 0 0 / 25%),
+      0 0 0 10px rgb(30 158 88 / 18%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1020px) {
+  .desktop-nav {
+    gap: 0.95rem;
+    font-size: 0.76rem;
+  }
+
+  .brand {
+    font-size: 0.95rem;
+  }
+
+  .nav-cta {
+    padding-inline: 0.8rem;
+    font-size: 0.73rem;
+  }
+
+  .circuit-layout {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .desktop-nav,
+  .nav-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: 1.35rem var(--page-gutter) 1.6rem;
+    border-top: 1px solid rgb(255 255 255 / 10%);
+    background: var(--maroon);
+    box-shadow: 0 12px 24px rgb(30 9 9 / 20%);
+    animation: fade-up 220ms ease both;
+    color: #fff8e9;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .mobile-nav .mobile-cta {
+    align-self: flex-start;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--gold);
+    border-radius: 99px;
+    color: #fff7df;
+  }
+
+  .circuit-layout,
+  .international-layout,
+  .senior-layout,
+  .testimonial-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .circuit-image {
+    height: 420px;
+    min-height: 0;
+    box-shadow: 16px 16px 0 rgb(199 154 67 / 17%);
+  }
+
+  .destination-grid {
+    min-height: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, 250px);
+  }
+
+  .destination:first-child {
+    grid-row: auto;
+    grid-column: span 2;
+  }
+
+  .ceremony-section {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ceremony-image {
+    min-height: 390px;
+  }
+
+  .ceremony-copy {
+    padding: 3.25rem var(--page-gutter);
+  }
+
+  .senior-image {
+    height: 380px;
+  }
+
+  .testimonial-image {
+    height: 400px;
+  }
+
+  .partner-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-gutter: 1rem;
+  }
+
+  html {
+    scroll-padding-top: 4.75rem;
+  }
+
+  .site-header {
+    padding-block: 0.55rem;
+  }
+
+  .hero {
+    min-height: max(620px, 92svh);
+  }
+
+  .hero-image {
+    object-position: 56% center;
+  }
+
+  .hero-content {
+    padding-top: 4rem;
+  }
+
+  .hero .kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 14vw, 4rem);
+  }
+
+  .hero-copy {
+    max-width: 34rem;
+    margin-bottom: 1.6rem;
+    font-size: 0.94rem;
+  }
+
+  .button-row {
+    gap: 0.7rem;
+  }
+
+  .button {
+    min-height: 3rem;
+    padding: 0.8rem 1.05rem;
+    font-size: 0.8rem;
+  }
+
+  .scroll-cue {
+    bottom: 1.35rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+  }
+
+  .section {
+    padding-block: 4.4rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2.3rem;
+  }
+
+  .section-heading h2,
+  .copy-title {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+
+  .journey-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .journey-card__image {
+    height: 15rem;
+  }
+
+  .journey-card__body {
+    padding: 1.35rem;
+  }
+
+  .circuit-image {
+    height: 310px;
+    box-shadow: 10px 10px 0 rgb(199 154 67 / 17%);
+  }
+
+  .circuit-copy h2,
+  .international-copy h2,
+  .senior-copy h2,
+  .ceremony-copy h2 {
+    font-size: clamp(2.3rem, 10vw, 3rem);
+  }
+
+  .steps {
+    margin-top: 1.4rem;
+  }
+
+  .step {
+    gap: 0.9rem;
+  }
+
+  .destination-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .destination {
+    min-height: 220px;
+  }
+
+  .destination:first-child {
+    min-height: 290px;
+  }
+
+  .passport-card {
+    padding: 2rem 1.4rem;
+  }
+
+  .passport-card h2 {
+    font-size: 2.55rem;
+  }
+
+  .ceremony-image {
+    min-height: 300px;
+  }
+
+  .ceremony-copy {
+    padding: 2.7rem var(--page-gutter);
+  }
+
+  .feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .feature {
+    padding-block: 1rem;
+  }
+
+  .senior-image {
+    height: 300px;
+  }
+
+  .testimonial-image {
+    height: 300px;
+  }
+
+  .quote-card {
+    padding: 0;
+  }
+
+  .quote-card blockquote {
+    font-size: 1.6rem;
+  }
+
+  .partner-grid {
+    gap: 0.9rem;
+  }
+
+  .partner-card {
+    padding: 1.45rem;
+  }
+
+  .final-cta {
+    padding-block: 5rem;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(2.65rem, 12vw, 3.5rem);
+  }
+
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .footer-copy {
+    margin-top: 1.5rem;
+  }
+
+  .whatsapp-button {
+    right: 1rem;
+    bottom: 1rem;
+    width: 3.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal[data-reveal="hidden"] {
+    opacity: 1;
+    transform: none;
+  }
+}
