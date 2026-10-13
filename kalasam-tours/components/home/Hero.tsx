@@ -21,7 +21,7 @@ export function Hero() {
       <div className="hero-shade" aria-hidden="true" />
       <div className="hero-fade" aria-hidden="true" />
       <Reveal className="hero-content">
-        <div className="kicker">Kalasam Tourism · South India</div>
+        <div className="kicker">Kalasam Tours · South India</div>
         <h1 id="hero-title">
           Journeys Beyond
           <br />

@@ -22,7 +22,7 @@ export function FinalCTA() {
           </a>
           <a
             className="button button-outline"
-            href="mailto:hello@kalasamtourism.com"
+            href="mailto:hello@kalasamTours.com"
           >
             Send an Enquiry
           </a>
