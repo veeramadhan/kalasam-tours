@@ -1,13 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navigation = [
-  { label: "Journeys", href: "#journeys" },
-  { label: "Temple Circuits", href: "#circuits" },
-  { label: "Ceremonies", href: "#ceremonies" },
-  { label: "Senior Care", href: "#senior" },
-  { label: "B2B", href: "#partners" },
+  { label: "Journeys", href: "/#journeys" },
+  { label: "Temple Circuits", href: "/#circuits" },
+  { label: "Ceremonies", href: "/#ceremonies" },
+  { label: "Senior Care", href: "/#senior" },
+  { label: "B2B", href: "/#partners" },
 ];
 
 export function Header() {
@@ -42,24 +43,24 @@ export function Header() {
       }}
     >
       <div className="container nav-inner">
-        <a className="brand" href="#top" onClick={() => setOpen(false)}>
+        <Link className="brand" href="/#top" onClick={() => setOpen(false)}>
           <span className="brand-mark" aria-hidden="true">
             𑁍
           </span>
           <span>KALASAM</span>
-        </a>
+        </Link>
 
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((item) => (
-            <a key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a className="nav-cta" href="#plan">
+        <Link className="nav-cta" href="/#plan">
           Plan My Journey
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -88,21 +89,21 @@ export function Header() {
           aria-label="Mobile navigation"
         >
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
-          <a
+          <Link
             className="mobile-cta"
-            href="#plan"
+            href="/#plan"
             onClick={() => setOpen(false)}
           >
             Plan My Journey
-          </a>
+          </Link>
         </nav>
       )}
     </header>

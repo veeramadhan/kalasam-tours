@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal } from "@/components/home/Reveal";
 import { ImageCard } from "@/components/home/ImageCard";
 import type { HomeImage } from "@/types/homepage";
@@ -14,7 +15,7 @@ export function Hero() {
         <ImageCard
           image={heroImage}
           sizes="100vw"
-          priority
+          preload
           className="hero-image"
         />
       </div>
@@ -34,17 +35,17 @@ export function Hero() {
           journey.
         </p>
         <div className="button-row">
-          <a className="button button-gold" href="#journeys">
+          <Link className="button button-gold" href="/#journeys">
             Explore Journeys
-          </a>
-          <a className="button button-outline" href="#plan">
+          </Link>
+          <Link className="button button-outline" href="/#plan">
             Plan My Journey
-          </a>
+          </Link>
         </div>
       </Reveal>
-      <a className="scroll-cue" href="#journeys">
+      <Link className="scroll-cue" href="/#journeys">
         SCROLL TO DISCOVER ↓
-      </a>
+      </Link>
     </section>
   );
 }

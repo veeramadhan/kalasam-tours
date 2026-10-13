@@ -15,9 +15,9 @@ export function SacredJourneys() {
           />
         </Reveal>
         <div className="journey-grid">
-          {journeys.map((journey, index) => (
+          {journeys.map((journey) => (
             <Reveal key={journey.number}>
-              <JourneyCard journey={journey} priority={index === 0} />
+              <JourneyCard journey={journey} />
             </Reveal>
           ))}
         </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ceremonyImage } from "@/data/homepage";
 import { ImageCard } from "@/components/home/ImageCard";
 import { Reveal } from "@/components/home/Reveal";
@@ -29,9 +30,9 @@ export function FamilyCeremonies() {
           From temple coordination and accommodation to transport and
           day-by-day assistance, every detail is thoughtfully arranged.
         </p>
-        <a className="button button-gold" href="#plan">
+        <Link className="button button-gold" href="/#plan">
           Plan a Family Ceremony
-        </a>
+        </Link>
       </Reveal>
     </section>
   );

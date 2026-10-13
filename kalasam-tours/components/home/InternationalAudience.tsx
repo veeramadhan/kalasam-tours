@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal } from "@/components/home/Reveal";
 
 const countries = ["🇲🇾 Malaysia", "🇸🇬 Singapore", "🇱🇰 Sri Lanka"];
@@ -18,9 +19,9 @@ export function InternationalAudience() {
               or bringing the whole family, Kalasam designs the journey around
               your purpose — not simply a fixed package.
             </p>
-            <a className="button button-gold" href="#plan">
+            <Link className="button button-gold" href="/#plan">
               Tell Us Your Story
-            </a>
+            </Link>
           </div>
         </Reveal>
         <Reveal>

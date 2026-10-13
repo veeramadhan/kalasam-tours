@@ -7,14 +7,14 @@ import type { HomeImage } from "@/types/homepage";
 type ImageCardProps = {
   image: HomeImage;
   sizes: string;
-  priority?: boolean;
+  preload?: boolean;
   className?: string;
 };
 
 export function ImageCard({
   image,
   sizes,
-  priority = false,
+  preload = false,
   className = "",
 }: ImageCardProps) {
   const [loaded, setLoaded] = useState(false);
@@ -27,8 +27,7 @@ export function ImageCard({
         alt={image.alt}
         fill
         sizes={sizes}
-        priority={priority}
-        loading={priority ? "eager" : "lazy"}
+        preload={preload}
         onLoad={() => setLoaded(true)}
         data-loaded={loaded}
         className={`image-card__image ${className}`.trim()}
