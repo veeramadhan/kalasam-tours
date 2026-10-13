@@ -33,14 +33,14 @@ export function Footer() {
         <div>
           <h2 className="footer-title">Connect</h2>
           <p>Chennai · Tamil Nadu<br />India</p>
-          <a href="mailto:hello@kalasamtourism.com">
-            hello@kalasamtourism.com
+          <a href="mailto:hello@kalasamTours.com">
+            hello@kalasamTours.com
           </a>
         </div>
       </div>
 
       <div className="container footer-copy">
-        © 2026 Kalasam Tourism · Design prototype · Images are visual placeholders
+        © 2026 Kalasam Tours · Design prototype · Images are visual placeholders
         and should be replaced with licensed brand photography.
       </div>
     </footer>
