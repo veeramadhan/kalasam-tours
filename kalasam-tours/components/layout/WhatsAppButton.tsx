@@ -1,19 +1,17 @@
+import { SiWhatsapp } from "react-icons/si";
+import { createWhatsAppUrl } from "@/lib/whatsapp";
+
 export function WhatsAppButton() {
-  const phoneNumber = "919999999999";
-
-  const message = encodeURIComponent(
-    "Hello Kalasam Tourism, I would like to plan a journey."
-  );
-
   return (
     <a
-      href={`https://wa.me/${phoneNumber}?text=${message}`}
+      href={createWhatsAppUrl()}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Kalasam Tourism on WhatsApp"
+      title="Chat with us on WhatsApp"
       className="whatsapp-button"
     >
-      <span aria-hidden="true">WA</span>
+      <SiWhatsapp className="whatsapp-button__icon" aria-hidden="true" />
     </a>
   );
 }
