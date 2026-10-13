@@ -3,7 +3,7 @@ import { ImageCard } from "@/components/home/ImageCard";
 import type { HomeImage } from "@/types/homepage";
 
 const heroImage: HomeImage = {
-  src: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop",
+  src: "/images/hero-temple.webp",
   alt: "A towering South Indian temple gopuram illuminated by the warm evening sun",
 };
 

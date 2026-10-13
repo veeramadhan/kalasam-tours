@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/home/Reveal";
+import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 export function FinalCTA() {
   return (
@@ -13,7 +14,7 @@ export function FinalCTA() {
         <div className="button-row">
           <a
             className="button button-gold"
-            href="https://wa.me/919999999999?text=Hello%20Kalasam%20Tours%2C%20I%20would%20like%20to%20plan%20a%20journey."
+            href={createWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
           >

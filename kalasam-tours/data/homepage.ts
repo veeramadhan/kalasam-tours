@@ -6,9 +6,6 @@ import type {
   PartnerType,
 } from "@/types/homepage";
 
-const unsplash = (photo: string) =>
-  `https://images.unsplash.com/${photo}?auto=format&fit=crop`;
-
 export const journeys: Journey[] = [
   {
     number: "01",
@@ -17,7 +14,7 @@ export const journeys: Journey[] = [
     description:
       "Walk through magnificent Chola temples, sacred towns and living traditions.",
     image: {
-      src: unsplash("photo-1609766857041-ed402ea8069a"),
+      src: "/images/temple-heritage.webp",
       alt: "A monumental South Indian temple tower rising above its stone courtyard",
     },
   },
@@ -28,7 +25,7 @@ export const journeys: Journey[] = [
     description:
       "Temple visits, tranquil landscapes and cultural experiences shaped around your pace.",
     image: {
-      src: unsplash("photo-1593693411515-c20261bcad6e"),
+      src: "/images/kerala-backwaters.webp",
       alt: "A tranquil Kerala backwater framed by lush green palms",
     },
   },
@@ -39,15 +36,15 @@ export const journeys: Journey[] = [
     description:
       "Discover sacred architecture, heritage cities and timeless South Indian stories.",
     image: {
-      src: unsplash("photo-1548013146-72479768bada"),
-      alt: "Historic architecture and sacred heritage of South India",
+      src: "/images/mysore-palace-night.webp",
+      alt: "Mysore Palace glowing against the evening sky in Karnataka",
     },
   },
 ];
 
 export const cholaCircuitImage = {
-  src: unsplash("photo-1609766857041-ed402ea8069a"),
-  alt: "A monumental South Indian temple tower rising above its stone courtyard",
+  src: "/images/chola-circuit.webp",
+  alt: "A Chola temple and stone courtyard illuminated by golden evening light",
 };
 
 export const cholaCircuitSteps: JourneyStep[] = [
@@ -73,52 +70,52 @@ export const destinations: Destination[] = [
     region: "Tamil Nadu",
     title: "Temple Towns",
     image: {
-      src: unsplash("photo-1582510003544-4d00b7f74220"),
-      alt: "A richly detailed temple gopuram in Tamil Nadu",
+      src: "/images/temple-towns.webp",
+      alt: "A Tamil Nadu temple-town street leading toward a colorful gopuram",
     },
   },
   {
     region: "Kerala",
     title: "Serene Trails",
     image: {
-      src: unsplash("photo-1593693411515-c20261bcad6e"),
-      alt: "Palm-lined Kerala waters beneath a soft evening sky",
+      src: "/images/kerala-serene-trails.webp",
+      alt: "A quiet canoe crossing a palm-lined Kerala canal in the morning",
     },
   },
   {
     region: "Karnataka",
     title: "Stone Stories",
     image: {
-      src: unsplash("photo-1548013146-72479768bada"),
-      alt: "Historic stone architecture and sacred heritage of South India",
+      src: "/images/hampi-stone-stories.webp",
+      alt: "Historic stone pavilions among the boulder-strewn landscape of Hampi",
     },
   },
   {
     region: "Sacred",
     title: "Living Traditions",
     image: {
-      src: unsplash("photo-1548013146-72479768bada"),
-      alt: "A devotional South Indian temple interior",
+      src: "/images/living-traditions-v2.webp",
+      alt: "Brass oil lamps, flower garlands and a kolam in a South Indian temple corridor",
     },
   },
   {
     region: "Heritage",
     title: "Ancient Architecture",
     image: {
-      src: unsplash("photo-1609766857041-ed402ea8069a"),
-      alt: "A historic South Indian temple framed by open sky",
+      src: "/images/ancient-architecture.webp",
+      alt: "Intricate Hoysala stone carvings and sculpted temple pillars",
     },
   },
 ];
 
 export const ceremonyImage = {
-  src: unsplash("photo-1590050752117-238cb0fb12b1"),
+  src: "/images/family-ceremony.webp",
   alt: "A South Indian family ceremony decorated with flowers and traditional details",
 };
 
 export const seniorImage = {
-  src: unsplash("photo-1548013146-72479768bada"),
-  alt: "A peaceful temple courtyard offering space to pause and reflect",
+  src: "/images/mysore-palace-day.webp",
+  alt: "Mysore Palace viewed in daylight beneath a blue sky",
 };
 
 export const assistanceFeatures: AssistanceFeature[] = [
@@ -145,8 +142,8 @@ export const assistanceFeatures: AssistanceFeature[] = [
 ];
 
 export const testimonialImage = {
-  src: unsplash("photo-1609766857041-ed402ea8069a"),
-  alt: "A South Indian temple surrounded by heritage stone architecture",
+  src: "/images/family-testimonial.webp",
+  alt: "A multigenerational family walking together through a South Indian temple courtyard",
 };
 
 export const travelPartners: PartnerType[] = [
