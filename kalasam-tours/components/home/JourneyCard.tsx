@@ -2,12 +2,8 @@ import { ImageCard } from "@/components/home/ImageCard";
 import type { Journey } from "@/types/homepage";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
 
-export function JourneyCard({
-  journey,
-  priority = false,
-}: {
+export function JourneyCard({ journey }: {
   journey: Journey;
-  priority?: boolean;
 }) {
   const enquiryMessage = `Hello Kalasam Tourism, I would like to know more about the ${journey.title} journey in ${journey.region}.`;
 
@@ -17,7 +13,6 @@ export function JourneyCard({
         <ImageCard
           image={journey.image}
           sizes="(max-width: 600px) 100vw, (max-width: 850px) 80vw, 380px"
-          priority={priority}
         />
       </div>
       <div className="journey-card__body">

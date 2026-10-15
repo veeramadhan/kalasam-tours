@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { cholaCircuitImage, cholaCircuitSteps } from "@/data/homepage";
 import { ImageCard } from "@/components/home/ImageCard";
 import { Reveal } from "@/components/home/Reveal";
@@ -38,9 +39,9 @@ export function TempleCircuit() {
                 </div>
               ))}
             </div>
-            <a className="button button-gold circuit-button" href="#plan">
+            <Link className="button button-gold circuit-button" href="/#plan">
               Build This Journey
-            </a>
+            </Link>
           </div>
         </Reveal>
       </div>
